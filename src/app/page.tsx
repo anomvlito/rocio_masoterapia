@@ -350,7 +350,7 @@ export default function Home() {
             {resenas.map((r, i) => (
               <div key={i} className="bg-stone-800 border border-stone-700 rounded-2xl p-6 hover:border-stone-500 transition-colors">
                 <div className="text-yellow-400 mb-4">{'★'.repeat(r.estrellas)}</div>
-                <p className="text-stone-300 italic leading-relaxed mb-6">"{r.texto}"</p>
+                <p className="text-stone-300 italic leading-relaxed mb-6">&ldquo;{r.texto}&rdquo;</p>
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 bg-stone-700 rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {r.nombre.charAt(0)}
