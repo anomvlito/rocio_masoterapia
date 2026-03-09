@@ -3,51 +3,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
-import type { User } from "@supabase/supabase-js";
-import type { Profile } from "@/types";
+
+const WA_LINK = "https://wa.me/56942142229?text=Hola%2C%20quisiera%20agendar%20una%20hora";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const supabase = createClient();
-
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user);
-      if (user) {
-        supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", user.id)
-          .single()
-          .then(({ data }) => setProfile(data));
-      }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
-
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      subscription.unsubscribe();
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    window.location.href = "/";
-  };
 
   const navLinks = [
     { href: "/#servicios", label: "Servicios" },
@@ -93,10 +60,10 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA + Auth */}
+          {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE}`}
+              href="tel:+56942142229"
               className={`flex items-center gap-1 text-sm transition-colors ${
                 scrolled ? "text-stone-600" : "text-white/80"
               }`}
@@ -105,37 +72,14 @@ export function Navbar() {
               <span>+56 9 4214 2229</span>
             </a>
 
-            {user ? (
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/booking"
-                  className="bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-stone-800 transition-colors"
-                >
-                  Agendar
-                </Link>
-                {profile?.role === "admin" && (
-                  <Link
-                    href="/admin"
-                    className="text-sm text-stone-600 hover:text-stone-900"
-                  >
-                    Admin
-                  </Link>
-                )}
-                <button
-                  onClick={handleSignOut}
-                  className="text-sm text-stone-500 hover:text-stone-700"
-                >
-                  Salir
-                </button>
-              </div>
-            ) : (
-              <Link
-                href="/booking"
-                className="bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-stone-800 transition-colors"
-              >
-                Agendar hora
-              </Link>
-            )}
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-stone-800 transition-colors"
+            >
+              Agendar hora
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -163,31 +107,15 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-3 border-t border-stone-100">
-              {user ? (
-                <>
-                  <Link
-                    href="/booking"
-                    onClick={() => setIsOpen(false)}
-                    className="block w-full text-center bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium mb-2"
-                  >
-                    Agendar hora
-                  </Link>
-                  <button
-                    onClick={handleSignOut}
-                    className="block w-full text-center text-stone-500 text-sm"
-                  >
-                    Cerrar sesión
-                  </button>
-                </>
-              ) : (
-                <Link
-                  href="/booking"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium"
-                >
-                  Agendar hora
-                </Link>
-              )}
+              <a
+                href={WA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center bg-stone-700 text-white px-4 py-2 rounded-full text-sm font-medium"
+              >
+                Agendar hora
+              </a>
             </div>
           </div>
         </div>

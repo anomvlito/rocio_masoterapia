@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
@@ -44,12 +43,14 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/booking"
+          <a
+            href="https://wa.me/56942142229?text=Hola%2C%20quisiera%20agendar%20una%20hora"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white text-stone-900 px-8 py-3 rounded-full font-semibold hover:bg-stone-100 transition-colors"
           >
             Agendar hora online
-          </Link>
+          </a>
           <a
             href="https://wa.me/56942142229"
             target="_blank"
