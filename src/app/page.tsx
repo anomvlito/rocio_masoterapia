@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { SetmoreButton } from '@/components/ui/SetmoreButton';
 
 const WA_NUMBER = '56942142229';
 const WA_TEXT = encodeURIComponent('Hola, quisiera agendar una hora de masaje 💆');
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
-const BOOKING_LINK = 'https://masoyrehabilitacion.setmore.com';
 
 const servicios = [
   {
@@ -91,14 +91,9 @@ export default function Home() {
             <a href={`tel:+${WA_NUMBER}`} className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
               +56 9 4214 2229
             </a>
-            <a
-              href={BOOKING_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-stone-800 hover:bg-stone-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
-            >
+            <SetmoreButton className="bg-stone-800 hover:bg-stone-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
               Agendar hora
-            </a>
+            </SetmoreButton>
           </div>
 
           <button
@@ -129,14 +124,9 @@ export default function Home() {
                 {label}
               </a>
             ))}
-            <a
-              href={BOOKING_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 text-center bg-stone-800 text-white font-semibold px-5 py-3 rounded-full"
-            >
+            <SetmoreButton className="mt-2 w-full text-center bg-stone-800 text-white font-semibold px-5 py-3 rounded-full cursor-pointer">
               Agendar hora online
-            </a>
+            </SetmoreButton>
           </div>
         )}
       </nav>
@@ -170,14 +160,9 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 w-full">
-            <a
-              href={BOOKING_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-white text-stone-900 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-stone-100 transition-all hover:scale-105 shadow-xl"
-            >
+            <SetmoreButton className="w-full sm:w-auto bg-white text-stone-900 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-stone-100 transition-all hover:scale-105 shadow-xl cursor-pointer">
               Reservar hora online
-            </a>
+            </SetmoreButton>
             <a
               href={WA_LINK}
               target="_blank"
@@ -236,14 +221,9 @@ export default function Home() {
                 <p className="text-stone-500 leading-relaxed text-sm" itemProp="description">
                   {s.descripcion}
                 </p>
-                <a
-                  href={BOOKING_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-5 text-sm font-semibold text-stone-700 border border-stone-300 px-4 py-2 rounded-full hover:bg-stone-800 hover:text-white hover:border-stone-800 transition-all"
-                >
+                <SetmoreButton className="inline-block mt-5 text-sm font-semibold text-stone-700 border border-stone-300 px-4 py-2 rounded-full hover:bg-stone-800 hover:text-white hover:border-stone-800 transition-all cursor-pointer">
                   Reservar →
-                </a>
+                </SetmoreButton>
               </article>
             ))}
           </div>
@@ -256,14 +236,9 @@ export default function Home() {
               60 minutos · Valor referencial{' '}
               <span className="line-through">$37.500</span>
             </p>
-            <a
-              href={BOOKING_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block sm:inline-block w-full sm:w-auto bg-white text-stone-900 font-bold px-4 sm:px-8 py-3.5 sm:py-3 rounded-full hover:bg-stone-100 transition-colors text-sm sm:text-base break-words"
-            >
-              Agendar en masoyrehabilitacion.setmore.com
-            </a>
+            <SetmoreButton className="block sm:inline-block w-full sm:w-auto bg-white text-stone-900 font-bold px-4 sm:px-8 py-3.5 sm:py-3 rounded-full hover:bg-stone-100 transition-colors text-sm sm:text-base cursor-pointer">
+              Agendar hora ahora
+            </SetmoreButton>
           </div>
         </div>
       </section>
@@ -310,14 +285,9 @@ export default function Home() {
                   </p>
                 ))}
               </div>
-              <a
-                href={BOOKING_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-bold px-7 py-3.5 rounded-full transition-colors self-start text-sm mt-2"
-              >
+              <SetmoreButton className="inline-flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-bold px-7 py-3.5 rounded-full transition-colors self-start text-sm mt-2 cursor-pointer">
                 Reservar mi hora →
-              </a>
+              </SetmoreButton>
             </div>
           </div>
         </div>
@@ -426,28 +396,18 @@ export default function Home() {
                   <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">🗓️</div>
                   <div>
                     <p className="font-bold text-stone-900">Agenda online</p>
-                    <a
-                      href={BOOKING_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-stone-600 hover:text-stone-900 transition-colors underline"
-                    >
+                    <SetmoreButton className="text-left text-stone-600 hover:text-stone-900 transition-colors underline cursor-pointer bg-transparent p-0 text-sm">
                       masoyrehabilitacion.setmore.com
-                    </a>
+                    </SetmoreButton>
                   </div>
                 </div>
               </div>
 
               {/* Botones CTA */}
               <div className="flex flex-col sm:flex-row gap-3 mt-2">
-                <a
-                  href={BOOKING_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center bg-stone-800 hover:bg-stone-700 text-white font-bold py-4 px-6 rounded-full transition-colors"
-                >
+                <SetmoreButton className="flex-1 text-center bg-stone-800 hover:bg-stone-700 text-white font-bold py-4 px-6 rounded-full transition-colors cursor-pointer">
                   Agendar online
-                </a>
+                </SetmoreButton>
                 <a
                   href={WA_LINK}
                   target="_blank"
