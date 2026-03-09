@@ -41,23 +41,7 @@ const servicios = [
   },
 ];
 
-const resenas = [
-  {
-    nombre: 'Andrea Soto',
-    texto: 'Rocío es increíblemente profesional. El masaje descontracturante fue exactamente lo que necesitaba. Salí nueva.',
-    estrellas: 5,
-  },
-  {
-    nombre: 'Felipe Morales',
-    texto: 'Llevo meses con dolor de espalda y en dos sesiones notablemente mejor. Muy recomendada, trato excelente.',
-    estrellas: 5,
-  },
-  {
-    nombre: 'Camila Vega',
-    texto: 'El ambiente es relajante y el trato es cálido. El masaje relajante fue top. Ya agendé para el próximo mes.',
-    estrellas: 5,
-  },
-];
+
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -100,7 +84,6 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#servicios" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Servicios</a>
             <a href="#nosotros" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Nosotros</a>
-            <a href="#resenas" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Reseñas</a>
             <a href="#contacto" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Contacto</a>
           </div>
 
@@ -140,7 +123,6 @@ export default function Home() {
             {[
               ['#servicios', 'Servicios'],
               ['#nosotros', 'Nosotros'],
-              ['#resenas', 'Reseñas'],
               ['#contacto', 'Contacto'],
             ].map(([href, label]) => (
               <a key={href} href={href} onClick={() => setIsMobileMenuOpen(false)} className="text-stone-700 font-medium text-lg">
@@ -214,10 +196,6 @@ export default function Home() {
             <div className="text-center px-4 md:px-8">
               <p className="text-2xl md:text-3xl font-bold text-white">3</p>
               <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">TERAPIAS</p>
-            </div>
-            <div className="text-center px-4 md:px-8">
-              <p className="text-2xl md:text-3xl font-bold text-white">5 ★</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">GOOGLE</p>
             </div>
           </div>
         </div>
@@ -377,56 +355,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RESEÑAS */}
-      <section id="resenas" className="py-20 md:py-28 bg-stone-900" aria-label="Testimonios de clientes">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-14 gap-6">
-            <div>
-              <p className="text-stone-400 text-sm font-semibold tracking-widest uppercase mb-2">Testimonios</p>
-              <h2 className="text-4xl font-bold text-white">Lo que dice nuestra comunidad</h2>
-            </div>
-            <div
-              className="flex items-center gap-4 bg-stone-800 border border-stone-700 px-6 py-4 rounded-2xl"
-              itemScope
-              itemType="https://schema.org/AggregateRating"
-            >
-              <span className="text-5xl font-black text-white" itemProp="ratingValue">5.0</span>
-              <div>
-                <div className="text-yellow-400 text-lg" aria-label="5 estrellas">★★★★★</div>
-                <p className="text-stone-400 text-xs mt-1">Google Reviews</p>
-                <meta itemProp="reviewCount" content="47" />
-                <meta itemProp="bestRating" content="5" />
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {resenas.map((r, i) => (
-              <article
-                key={i}
-                className="bg-stone-800 border border-stone-700 rounded-2xl p-6 hover:border-stone-500 transition-colors"
-                itemScope
-                itemType="https://schema.org/Review"
-              >
-                <div className="text-yellow-400 mb-4" aria-label={`${r.estrellas} estrellas`}>
-                  {'★'.repeat(r.estrellas)}
-                </div>
-                <p className="text-stone-300 italic leading-relaxed mb-6" itemProp="reviewBody">
-                  &ldquo;{r.texto}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-stone-700 rounded-full flex items-center justify-center text-white font-bold text-sm" aria-hidden="true">
-                    {r.nombre.charAt(0)}
-                  </div>
-                  <span className="text-white font-semibold text-sm" itemProp="author">
-                    {r.nombre}
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CONTACTO Y UBICACIÓN */}
       <section id="contacto" className="py-20 md:py-28 bg-white" aria-label="Contacto y ubicación">
