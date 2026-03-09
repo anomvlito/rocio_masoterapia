@@ -72,8 +72,11 @@ export default function Home() {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-stone-800 text-stone-200 text-xs text-center py-2 px-4 tracking-wide">
+      <div className="bg-stone-800 text-stone-200 text-xs text-center py-2 px-4 tracking-wide hidden sm:block">
         MASOY REHABILITACIÓN · Froilán Roa #6333, La Florida · Lun–Vie 9:00–18:00 · Sáb–Dom 9:00–14:00
+      </div>
+      <div className="bg-stone-800 text-stone-200 text-[10px] text-center py-2 px-2 tracking-wide sm:hidden">
+        Froilán Roa #6333, La Florida · Lun–Vie 9:00–18:00
       </div>
 
       {/* Navbar */}
@@ -83,14 +86,14 @@ export default function Home() {
         }`}
         aria-label="Navegación principal"
       >
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="#" className="flex items-center gap-2" aria-label="Inicio Masoy Rehabilitación">
-            <div className="w-9 h-9 rounded-full bg-stone-800 flex items-center justify-center">
-              <span className="text-white font-bold text-base">M</span>
+        <div className="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex justify-between items-center">
+          <a href="#" className="flex items-center gap-2 sm:gap-3 shrink-0" aria-label="Inicio Masoy Rehabilitación">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-stone-800 flex items-center justify-center shrink-0">
+              <span className="text-white font-bold text-sm sm:text-base">M</span>
             </div>
             <div>
-              <p className="font-bold text-stone-900 text-sm leading-none">Masoy Rehabilitación</p>
-              <p className="text-stone-400 text-xs">Masoterapia · La Florida</p>
+              <p className="font-bold text-stone-900 text-[13px] sm:text-sm leading-none">Masoy Rehabilitación</p>
+              <p className="text-stone-400 text-[10px] sm:text-xs mt-0.5">Masoterapia · La Florida</p>
             </div>
           </a>
 
@@ -173,23 +176,23 @@ export default function Home() {
           <p className="text-stone-300 text-sm font-medium tracking-[0.3em] uppercase mb-4">
             Froilán Roa #6333 · La Florida, Santiago
           </p>
-          <h1 className="text-5xl md:text-7xl font-light text-white leading-tight mb-5">
-            Libera tensiones,<br />
-            <span className="font-bold text-stone-200">reconecta con tu cuerpo</span>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.1] mb-5">
+            Libera tensiones,<br className="hidden sm:block" />
+            <span className="font-bold text-stone-200 sm:block">reconecta con tu cuerpo</span>
           </h1>
-          <p className="text-stone-300 text-lg md:text-xl max-w-2xl mx-auto mb-3 leading-relaxed">
+          <p className="text-stone-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-3 px-2 leading-relaxed">
             Un espacio para relajarte, desconectar y recargar tu energía.
           </p>
-          <p className="text-stone-400 text-base mb-10">
-            Masajes desde <strong className="text-white">$34.000</strong> los 60 min · La Florida, Santiago
+          <p className="text-stone-400 text-sm sm:text-base mb-10 px-4">
+            Masajes desde <strong className="text-white">$34.000</strong> los 60 min<br className="sm:hidden" /> <span className="hidden sm:inline">·</span> La Florida, Santiago
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 w-full">
             <a
               href={BOOKING_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-stone-900 px-8 py-4 rounded-full font-bold text-base hover:bg-stone-100 transition-all hover:scale-105 shadow-xl"
+              className="w-full sm:w-auto bg-white text-stone-900 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-stone-100 transition-all hover:scale-105 shadow-xl"
             >
               Reservar hora online
             </a>
@@ -197,26 +200,24 @@ export default function Home() {
               href={WA_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-white/50 text-white px-8 py-4 rounded-full font-medium text-base hover:bg-white/10 transition-colors"
+              className="w-full sm:w-auto border-2 border-white/50 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-medium text-sm sm:text-base hover:bg-white/10 transition-colors"
             >
               WhatsApp
             </a>
           </div>
 
-          <div className="flex items-center justify-center gap-10 mt-16 text-stone-300">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-white">$34.000</p>
-              <p className="text-xs uppercase tracking-widest mt-1">60 minutos</p>
+          <div className="flex flex-row items-center justify-center mt-12 md:mt-16 text-stone-300 divide-x divide-stone-600">
+            <div className="text-center px-4 md:px-8">
+              <p className="text-2xl md:text-3xl font-bold text-white">$34.000</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">60 MIN</p>
             </div>
-            <div className="h-10 w-px bg-stone-600" />
-            <div className="text-center">
-              <p className="text-3xl font-bold text-white">3</p>
-              <p className="text-xs uppercase tracking-widest mt-1">Especialidades</p>
+            <div className="text-center px-4 md:px-8">
+              <p className="text-2xl md:text-3xl font-bold text-white">3</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">TERAPIAS</p>
             </div>
-            <div className="h-10 w-px bg-stone-600" />
-            <div className="text-center">
-              <p className="text-3xl font-bold text-white">5 ★</p>
-              <p className="text-xs uppercase tracking-widest mt-1">Valoración</p>
+            <div className="text-center px-4 md:px-8">
+              <p className="text-2xl md:text-3xl font-bold text-white">5 ★</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">GOOGLE</p>
             </div>
           </div>
         </div>
@@ -281,7 +282,7 @@ export default function Home() {
               href={BOOKING_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-stone-900 font-bold px-8 py-3 rounded-full hover:bg-stone-100 transition-colors"
+              className="block sm:inline-block w-full sm:w-auto bg-white text-stone-900 font-bold px-4 sm:px-8 py-3.5 sm:py-3 rounded-full hover:bg-stone-100 transition-colors text-sm sm:text-base break-words"
             >
               Agendar en masoyrehabilitacion.setmore.com
             </a>
@@ -319,13 +320,16 @@ export default function Home() {
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  '✔ Masoterapeutas certificados',
-                  '✔ Masajes desde $34.000 los 60 min',
-                  '✔ Agenda online 24/7 en setmore',
-                  '✔ Atención Lun–Vie 9:00–18:00 / Sáb–Dom',
-                  '✔ Froilán Roa #6333, La Florida, Santiago',
+                  'Masoterapeutas certificados',
+                  'Masajes desde $34.000 los 60 min',
+                  'Agenda online 24/7 en setmore',
+                  'Atención Lun–Vie 9:00–18:00 / Sáb–Dom',
+                  'Froilán Roa #6333, La Florida, Santiago',
                 ].map((item) => (
-                  <p key={item} className="text-stone-700 font-medium text-sm">{item}</p>
+                  <p key={item} className="text-stone-700 font-medium text-sm flex items-start gap-2">
+                    <span className="text-stone-400 shrink-0">✔</span>
+                    <span>{item}</span>
+                  </p>
                 ))}
               </div>
               <a
