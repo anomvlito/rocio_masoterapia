@@ -123,7 +123,7 @@ export default function Home() {
               </a>
             ))}
             <SetmoreButton className="mt-2 w-full text-center bg-stone-800 text-white font-semibold px-5 py-3 rounded-full cursor-pointer">
-              Agendar hora online
+              Agendar hora
             </SetmoreButton>
           </div>
         )}
@@ -159,7 +159,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 w-full">
             <SetmoreButton className="w-full sm:w-auto bg-white text-stone-900 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm sm:text-base hover:bg-stone-100 transition-all hover:scale-105 shadow-xl cursor-pointer">
-              Reservar hora online
+              Reservar hora
             </SetmoreButton>
             <a
               href={WA_LINK}
@@ -295,7 +295,7 @@ export default function Home() {
                   'Camilla, toallas, música y aromaterapia incluidos',
                   'Para 1 o 2 personas',
                   'Lunes a sábado, 09:00–20:00',
-                  'Agenda online o por WhatsApp',
+                  'Agenda por WhatsApp',
                 ].map((item) => (
                   <p key={item} className="text-stone-700 font-medium text-sm flex items-start gap-2">
                     <span className="text-stone-400 shrink-0">✔</span>
@@ -406,9 +406,9 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">🗓️</div>
                   <div>
-                    <p className="font-bold text-stone-900">Agenda online</p>
+                    <p className="font-bold text-stone-900">WhatsApp</p>
                     <SetmoreButton className="text-left text-stone-600 hover:text-stone-900 transition-colors underline cursor-pointer bg-transparent p-0 text-sm">
-                      Reservar hora aquí
+                      Agendar por WhatsApp
                     </SetmoreButton>
                   </div>
                 </div>
@@ -417,7 +417,7 @@ export default function Home() {
               {/* Botones CTA */}
               <div className="flex flex-col sm:flex-row gap-3 mt-2">
                 <SetmoreButton className="flex-1 text-center bg-stone-800 hover:bg-stone-700 text-white font-bold py-4 px-6 rounded-full transition-colors cursor-pointer">
-                  Agendar online
+                  Agendar hora
                 </SetmoreButton>
                 <a
                   href={WA_LINK}

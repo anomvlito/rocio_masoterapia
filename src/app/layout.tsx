@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import { SetmoreTrigger } from "@/components/ui/SetmoreButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -147,7 +146,6 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} antialiased`}>
-        <SetmoreTrigger />
         {children}
       </body>
     </html>

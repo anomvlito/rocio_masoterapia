@@ -1,53 +1,30 @@
 "use client";
 
-import Script from "next/script";
 import { cn } from "@/lib/utils";
 
-const SETMORE_URL = "https://masoyrehabilitacion.setmore.com";
+const WA_NUMBER = "56942142229";
+const WA_TEXT = encodeURIComponent("Hola Rocío, quisiera agendar un masaje a domicilio 💆");
+const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
 
-// Trigger oculto — cargado UNA vez en el layout o en el primer SetmoreButton
-export function SetmoreTrigger() {
-  return (
-    <>
-      <Script
-        id="setmore-widget-script"
-        src="https://storage.googleapis.com/fullintegration-live/webComponentAppListing/Container/setmoreIframe.js"
-        strategy="lazyOnload"
-      />
-      {/* Botón oculto que el script de Setmore intercepta */}
-      <a
-        id="Setmore_button_iframe"
-        href={SETMORE_URL}
-        style={{ display: "none" }}
-        aria-hidden="true"
-        tabIndex={-1}
-      >
-        Setmore trigger
-      </a>
-    </>
-  );
-}
-
-interface SetmoreButtonProps {
+interface BookingButtonProps {
   className?: string;
   children?: React.ReactNode;
 }
 
-// Botón reutilizable — puede usarse N veces en cualquier parte
-export function SetmoreButton({ className, children }: SetmoreButtonProps) {
-  const openWidget = () => {
-    const trigger = document.getElementById("Setmore_button_iframe");
-    if (trigger) {
-      trigger.click();
-    } else {
-      // Fallback: abrir en nueva pestaña si el script aún no cargó
-      window.open(SETMORE_URL, "_blank", "noopener,noreferrer");
-    }
-  };
-
+export function SetmoreButton({ className, children }: BookingButtonProps) {
   return (
-    <button type="button" onClick={openWidget} className={cn(className)}>
+    <a
+      href={WA_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(className)}
+    >
       {children ?? "Agendar hora"}
-    </button>
+    </a>
   );
+}
+
+// Ya no se necesita el trigger de Setmore
+export function SetmoreTrigger() {
+  return null;
 }
