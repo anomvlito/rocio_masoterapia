@@ -20,7 +20,7 @@ const businessJsonLd = {
     "name": "Santiago",
     "addressCountry": "CL",
   },
-  "image": "https://rocio-masoterapia.vercel.app/images/3.jpg.jpeg",
+  "image": "https://rocio-masoterapia.vercel.app/images/hero.jpg",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     siteName: "Rocío Masoterapia",
     images: [
       {
-        url: "/images/3.jpg.jpeg",
+        url: "/images/hero.jpg",
         width: 1200,
         height: 630,
         alt: "Rocío Masoterapia - Camilla de masaje a domicilio en Santiago",
