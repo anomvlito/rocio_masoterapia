@@ -135,18 +135,21 @@ export default function Home() {
         aria-label="Bienvenida"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero.jpg')" }}
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero.jpg')", backgroundPosition: "center 70%" }}
           role="img"
           aria-label="Camilla de masaje a domicilio — Rocío Masoterapia Santiago"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/65 via-stone-900/55 to-stone-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/85 via-stone-900/75 to-stone-900/90" />
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <p className="text-stone-300 text-sm font-medium tracking-[0.3em] uppercase mb-4">
             Masaje a domicilio · Santiago
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.1] mb-5">
+          <h1
+            className="text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.1] mb-5"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.7)' }}
+          >
             La experiencia de bienestar<br className="hidden sm:block" />
             <span className="font-bold text-stone-200 sm:block">en tu propio hogar</span>
           </h1>
