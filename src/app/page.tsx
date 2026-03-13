@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { SetmoreButton } from '@/components/ui/SetmoreButton';
 
 const WA_NUMBER = '56942142229';
-const WA_TEXT = encodeURIComponent('Hola, quisiera agendar una hora de masaje 💆');
+const WA_TEXT = encodeURIComponent('Hola Rocío, quisiera agendar un masaje a domicilio 💆');
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
 
 const servicios = [
@@ -14,20 +14,14 @@ const servicios = [
     icon: '🌿',
     nombre: 'Masaje Relajante',
     descripcion:
-      'Libera tensiones, alivia contracturas y te reconecta con tu cuerpo. Un espacio para relajarte, desconectar y recargar tu energía.',
-    duracion: '60 min',
-    precio: '$34.000',
-    precioRef: '$37.500',
+      'Libera tensiones, alivia el estrés y te reconecta con tu cuerpo. Técnica suave y envolvente que calma el sistema nervioso y restaura tu energía.',
   },
   {
     id: 2,
     icon: '💆',
     nombre: 'Masaje Descontracturante',
     descripcion:
-      'Técnica específica para liberar contracturas musculares acumuladas. Ideal para dolores cervicales, dorsales y lumbares causados por estrés o mala postura.',
-    duracion: '60 min',
-    precio: '$34.000',
-    precioRef: '$37.500',
+      'Trabaja en profundidad para liberar contracturas musculares. Ideal para dolores cervicales, dorsales y lumbares causados por estrés o mala postura.',
   },
   {
     id: 3,
@@ -35,13 +29,15 @@ const servicios = [
     nombre: 'Masaje Deportivo',
     descripcion:
       'Diseñado para deportistas activos. Mejora el rendimiento, previene lesiones y acelera la recuperación muscular post-entrenamiento.',
-    duracion: '60 min',
-    precio: '$34.000',
-    precioRef: '$37.500',
   },
 ];
 
-
+const precios = [
+  { duracion: '60 minutos', personas: '1 persona', precio: '$42.000' },
+  { duracion: '90 minutos', personas: '1 persona', precio: '$53.000' },
+  { duracion: '60 minutos', personas: '2 personas', precio: '$80.000' },
+  { duracion: '90 minutos', personas: '2 personas', precio: '$95.000' },
+];
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -57,10 +53,10 @@ export default function Home() {
     <>
       {/* Top bar */}
       <div className="bg-stone-800 text-stone-200 text-xs text-center py-2 px-4 tracking-wide hidden sm:block">
-        MASOY REHABILITACIÓN · Froilán Roa #6333, La Florida · Lun–Vie 9:00–18:00 · Sáb–Dom 9:00–14:00
+        Masaje a domicilio en Santiago · Lun–Sáb 09:00–20:00 · WhatsApp +56 9 4214 2229
       </div>
       <div className="bg-stone-800 text-stone-200 text-[10px] text-center py-2 px-2 tracking-wide sm:hidden">
-        Froilán Roa #6333, La Florida · Lun–Vie 9:00–18:00
+        Masaje a domicilio · Lun–Sáb 09:00–20:00
       </div>
 
       {/* Navbar */}
@@ -71,24 +67,25 @@ export default function Home() {
         aria-label="Navegación principal"
       >
         <div className="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex justify-between items-center">
-          <a href="#" className="flex items-center gap-2 sm:gap-3 shrink-0" aria-label="Inicio Masoy Rehabilitación">
+          <a href="#" className="flex items-center gap-2 sm:gap-3 shrink-0" aria-label="Inicio Rocío Masoterapia">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-stone-800 flex items-center justify-center shrink-0">
-              <span className="text-white font-bold text-sm sm:text-base">M</span>
+              <span className="text-white font-bold text-sm sm:text-base">R</span>
             </div>
             <div>
-              <p className="font-bold text-stone-900 text-[13px] sm:text-sm leading-none">Masoy Rehabilitación</p>
-              <p className="text-stone-400 text-[10px] sm:text-xs mt-0.5">Masoterapia · La Florida</p>
+              <p className="font-bold text-stone-900 text-[13px] sm:text-sm leading-none">Rocío Masoterapia</p>
+              <p className="text-stone-400 text-[10px] sm:text-xs mt-0.5">Masaje a domicilio · Santiago</p>
             </div>
           </a>
 
           <div className="hidden md:flex items-center gap-8">
             <a href="#servicios" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Servicios</a>
-            <a href="#nosotros" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Nosotros</a>
+            <a href="#precios" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Precios</a>
+            <a href="#sobre-mi" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Sobre mí</a>
             <a href="#contacto" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition-colors">Contacto</a>
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <a href={`tel:+${WA_NUMBER}`} className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-sm text-stone-500 hover:text-stone-900 transition-colors">
               +56 9 4214 2229
             </a>
             <SetmoreButton className="bg-stone-800 hover:bg-stone-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
@@ -117,7 +114,8 @@ export default function Home() {
           <div className="md:hidden bg-white border-t border-stone-100 px-4 py-5 flex flex-col gap-4">
             {[
               ['#servicios', 'Servicios'],
-              ['#nosotros', 'Nosotros'],
+              ['#precios', 'Precios'],
+              ['#sobre-mi', 'Sobre mí'],
               ['#contacto', 'Contacto'],
             ].map(([href, label]) => (
               <a key={href} href={href} onClick={() => setIsMobileMenuOpen(false)} className="text-stone-700 font-medium text-lg">
@@ -140,23 +138,23 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/564575294_18002891396827903_7842854950051613160_n.webp')" }}
           role="img"
-          aria-label="Centro de masoterapia Masoy Rehabilitación en La Florida"
+          aria-label="Rocío Masoterapia - Masaje a domicilio en Santiago"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/65 via-stone-900/55 to-stone-900/80" />
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <p className="text-stone-300 text-sm font-medium tracking-[0.3em] uppercase mb-4">
-            Froilán Roa #6333 · La Florida, Santiago
+            Masaje a domicilio · Santiago
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.1] mb-5">
-            Libera tensiones,<br className="hidden sm:block" />
-            <span className="font-bold text-stone-200 sm:block">reconecta con tu cuerpo</span>
+            La experiencia de bienestar<br className="hidden sm:block" />
+            <span className="font-bold text-stone-200 sm:block">en tu propio hogar</span>
           </h1>
           <p className="text-stone-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-3 px-2 leading-relaxed">
-            Un espacio para relajarte, desconectar y recargar tu energía.
+            Llevo camilla profesional, toallas, música y aromaterapia para que vivas una experiencia de bienestar y renovación en la calidez de tu hogar.
           </p>
           <p className="text-stone-400 text-sm sm:text-base mb-10 px-4">
-            Masajes desde <strong className="text-white">$34.000</strong> los 60 min<br className="sm:hidden" /> <span className="hidden sm:inline">·</span> La Florida, Santiago
+            Desde <strong className="text-white">$42.000</strong> los 60 min<br className="sm:hidden" /> <span className="hidden sm:inline">·</span> También para 2 personas
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 w-full">
@@ -175,12 +173,16 @@ export default function Home() {
 
           <div className="flex flex-row items-center justify-center mt-12 md:mt-16 text-stone-300 divide-x divide-stone-600">
             <div className="text-center px-4 md:px-8">
-              <p className="text-2xl md:text-3xl font-bold text-white">$34.000</p>
+              <p className="text-2xl md:text-3xl font-bold text-white">$42.000</p>
               <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">60 MIN</p>
             </div>
             <div className="text-center px-4 md:px-8">
               <p className="text-2xl md:text-3xl font-bold text-white">3</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">TERAPIAS</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">TIPOS DE MASAJE</p>
+            </div>
+            <div className="text-center px-4 md:px-8">
+              <p className="text-2xl md:text-3xl font-bold text-white">2</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">PERSONAS</p>
             </div>
           </div>
         </div>
@@ -190,12 +192,10 @@ export default function Home() {
       <section id="servicios" className="py-20 md:py-28 bg-stone-50" aria-label="Nuestros servicios">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase mb-3">Lo que ofrecemos</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Nuestros Servicios</h2>
+            <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase mb-3">Lo que ofrezco</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Tipos de Masaje</h2>
             <p className="text-stone-500 mt-4 text-lg max-w-2xl mx-auto">
-              Técnicas profesionales con atención personalizada. Masajes de 60 minutos desde{' '}
-              <strong className="text-stone-800">$34.000</strong>
-              <span className="text-stone-400 line-through ml-2 text-sm">$37.500</span>
+              Masaje a domicilio en Santiago. Llevo todo lo necesario para tu comodidad.
             </p>
           </div>
 
@@ -208,16 +208,9 @@ export default function Home() {
                 itemType="https://schema.org/Service"
               >
                 <div className="text-4xl mb-4" aria-hidden="true">{s.icon}</div>
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-lg font-bold text-stone-900 group-hover:text-stone-700 leading-tight" itemProp="name">
-                    {s.nombre}
-                  </h3>
-                  <div className="text-right shrink-0 ml-3">
-                    <p className="text-xl font-bold text-stone-800">{s.precio}</p>
-                    <p className="text-xs text-stone-400 line-through">{s.precioRef}</p>
-                    <p className="text-xs text-stone-400">{s.duracion}</p>
-                  </div>
-                </div>
+                <h3 className="text-lg font-bold text-stone-900 group-hover:text-stone-700 leading-tight mb-3" itemProp="name">
+                  {s.nombre}
+                </h3>
                 <p className="text-stone-500 leading-relaxed text-sm" itemProp="description">
                   {s.descripcion}
                 </p>
@@ -227,30 +220,57 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* CTA precio */}
-          <div className="mt-12 text-center bg-stone-800 text-white rounded-2xl p-8">
-            <p className="text-stone-400 text-sm uppercase tracking-widest mb-2">Precio especial de lanzamiento</p>
-            <p className="text-5xl font-black mb-1">$34.000</p>
-            <p className="text-stone-400 mb-6">
-              60 minutos · Valor referencial{' '}
-              <span className="line-through">$37.500</span>
+      {/* PRECIOS */}
+      <section id="precios" className="py-20 md:py-28 bg-white" aria-label="Precios de masaje a domicilio">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase mb-3">Tarifas</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-900">Precios</h2>
+            <p className="text-stone-500 mt-4 text-base max-w-xl mx-auto">
+              Precios directos, sin sorpresas. El traslado y todos los elementos están incluidos.
             </p>
-            <SetmoreButton className="block sm:inline-block w-full sm:w-auto bg-white text-stone-900 font-bold px-4 sm:px-8 py-3.5 sm:py-3 rounded-full hover:bg-stone-100 transition-colors text-sm sm:text-base cursor-pointer">
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            {precios.map((p) => (
+              <div
+                key={`${p.personas}-${p.duracion}`}
+                className="bg-stone-50 border border-stone-200 rounded-2xl p-6 flex items-center justify-between hover:border-stone-400 hover:shadow-md transition-all"
+              >
+                <div>
+                  <p className="font-bold text-stone-900 text-base">{p.personas}</p>
+                  <p className="text-stone-500 text-sm">{p.duracion}</p>
+                </div>
+                <p className="text-2xl font-black text-stone-800">{p.precio}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-stone-800 text-white rounded-2xl p-8 text-center">
+            <p className="text-stone-300 text-sm mb-2">Camilla · Toallas · Música · Aromaterapia</p>
+            <p className="text-stone-100 font-semibold text-lg mb-1">Todo incluido en el precio</p>
+            <p className="text-stone-400 text-sm mb-6">
+              Las reservas solo se pueden cancelar o reagendar con{' '}
+              <strong className="text-stone-200">24 horas de anticipación</strong>.
+            </p>
+            <SetmoreButton className="block sm:inline-block w-full sm:w-auto bg-white text-stone-900 font-bold px-8 py-3.5 rounded-full hover:bg-stone-100 transition-colors cursor-pointer">
               Agendar hora ahora
             </SetmoreButton>
           </div>
         </div>
       </section>
 
-      {/* NOSOTROS */}
-      <section id="nosotros" className="py-20 md:py-28 bg-white" aria-label="Sobre nosotros">
+      {/* SOBRE MÍ */}
+      <section id="sobre-mi" className="py-20 md:py-28 bg-stone-50" aria-label="Sobre Rocío Abarzúa">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/616271293_17858492112595349_3059228116870493808_n.webp"
-                alt="Profesional de Masoy Rehabilitación realizando masaje en La Florida"
+                alt="Rocío Abarzúa Torrealba - Maseoterapeuta a domicilio en Santiago"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -259,25 +279,23 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-6">
-              <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase">Sobre nosotros</p>
+              <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase">Sobre mí</p>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
-                Cuidado real,<br />resultado real.
+                Rocío Abarzúa<br />Torrealba
               </h2>
               <p className="text-stone-600 text-lg leading-relaxed italic border-l-4 border-stone-300 pl-4">
-                &ldquo;Libera tensiones, alivia contracturas y reconecta con tu cuerpo. Un espacio para relajarte, desconectar y recargar tu energía.&rdquo;
+                &ldquo;Masaje a domicilio en Santiago: llevo todo lo necesario para que vivas una experiencia de bienestar y renovación en la calidez de tu hogar.&rdquo;
               </p>
               <p className="text-stone-600 leading-relaxed">
-                En <strong>Masoy Rehabilitación</strong> somos un equipo de profesionales certificados en masoterapia,
-                ubicados en <strong>Froilán Roa #6333, La Florida</strong>. Cada sesión es adaptada
-                a tus necesidades, ya sea que busques relajación, alivio de contracturas o recuperación deportiva.
+                Soy maseoterapeuta profesional y llevo el servicio directamente a tu hogar en Santiago. Cada sesión incluye camilla, toallas, música relajante y aromaterapia. Solo necesitas disponer de un espacio cómodo; yo me encargo del resto.
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  'Masoterapeutas certificados',
-                  'Masajes desde $34.000 los 60 min',
-                  'Agenda online 24/7 en setmore',
-                  'Atención Lun–Vie 9:00–18:00 / Sáb–Dom',
-                  'Froilán Roa #6333, La Florida, Santiago',
+                  'Maseoterapeuta certificada',
+                  'Camilla, toallas, música y aromaterapia incluidos',
+                  'Para 1 o 2 personas',
+                  'Lunes a sábado, 09:00–20:00',
+                  'Agenda online o por WhatsApp',
                 ].map((item) => (
                   <p key={item} className="text-stone-700 font-medium text-sm flex items-start gap-2">
                     <span className="text-stone-400 shrink-0">✔</span>
@@ -299,7 +317,7 @@ export default function Home() {
           <div className="relative aspect-square overflow-hidden group">
             <Image
               src="/images/564575294_18002891396827903_7842854950051613160_n.webp"
-              alt="Sesión de masaje en Masoy Rehabilitación La Florida"
+              alt="Sesión de masaje a domicilio por Rocío Abarzúa"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
             />
@@ -307,7 +325,7 @@ export default function Home() {
           <div className="relative aspect-square overflow-hidden group">
             <Image
               src="/images/616271293_17858492112595349_3059228116870493808_n.webp"
-              alt="Profesional de masoterapia en centro de La Florida"
+              alt="Rocío Abarzúa Torrealba - Maseoterapeuta a domicilio Santiago"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
             />
@@ -325,38 +343,28 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* CONTACTO Y UBICACIÓN */}
-      <section id="contacto" className="py-20 md:py-28 bg-white" aria-label="Contacto y ubicación">
+      {/* CONTACTO */}
+      <section id="contacto" className="py-20 md:py-28 bg-white" aria-label="Contacto">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
             <div className="flex flex-col gap-7" itemScope itemType="https://schema.org/HealthAndBeautyBusiness">
               <div>
-                <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase mb-3">Encuéntranos</p>
+                <p className="text-stone-500 text-sm font-semibold tracking-widest uppercase mb-3">Contáctame</p>
                 <h2 className="text-4xl font-bold text-stone-900" itemProp="name">
-                  Visítanos en La Florida
+                  ¿Lista/o para tu masaje?
                 </h2>
               </div>
 
-              <div className="flex flex-col gap-5">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">📍</div>
-                  <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                    <p className="font-bold text-stone-900">Dirección</p>
-                    <p className="text-stone-600" itemProp="streetAddress">Froilán Roa #6333</p>
-                    <p className="text-stone-500 text-sm">
-                      <span itemProp="addressLocality">La Florida</span>,{' '}
-                      <span itemProp="addressRegion">Santiago</span>,{' '}
-                      <span itemProp="addressCountry">Chile</span>
-                    </p>
-                  </div>
-                </div>
+              <p className="text-stone-600 text-lg leading-relaxed">
+                Escríbeme por WhatsApp o agenda directamente en línea. Atiendo en Santiago de lunes a sábado.
+              </p>
 
+              <div className="flex flex-col gap-5">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">📱</div>
                   <div>
-                    <p className="font-bold text-stone-900">WhatsApp / Teléfono</p>
+                    <p className="font-bold text-stone-900">WhatsApp</p>
                     <a
                       href={WA_LINK}
                       target="_blank"
@@ -370,15 +378,16 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">✉️</div>
+                  <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">📸</div>
                   <div>
-                    <p className="font-bold text-stone-900">Email</p>
+                    <p className="font-bold text-stone-900">Instagram</p>
                     <a
-                      href="mailto:Masoyrehabilitacion@gmail.com"
+                      href="https://www.instagram.com/rocio.masoterapia"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-stone-600 hover:text-stone-900 transition-colors"
-                      itemProp="email"
                     >
-                      Masoyrehabilitacion@gmail.com
+                      @rocio.masoterapia
                     </a>
                   </div>
                 </div>
@@ -387,8 +396,10 @@ export default function Home() {
                   <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">🕐</div>
                   <div>
                     <p className="font-bold text-stone-900">Horario de atención</p>
-                    <p className="text-stone-600">Lunes a Viernes: <strong>9:00 – 18:00</strong></p>
-                    <p className="text-stone-600">Sábado y Domingo: <strong>9:00 – 14:00</strong></p>
+                    <p className="text-stone-600">Lunes a Sábado: <strong>09:00 – 20:00</strong></p>
+                    <p className="text-stone-500 text-sm mt-1">
+                      Cancelaciones y reagendamientos con 24 horas de anticipación.
+                    </p>
                   </div>
                 </div>
 
@@ -397,7 +408,7 @@ export default function Home() {
                   <div>
                     <p className="font-bold text-stone-900">Agenda online</p>
                     <SetmoreButton className="text-left text-stone-600 hover:text-stone-900 transition-colors underline cursor-pointer bg-transparent p-0 text-sm">
-                      masoyrehabilitacion.setmore.com
+                      Reservar hora aquí
                     </SetmoreButton>
                   </div>
                 </div>
@@ -423,18 +434,38 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Google Maps - Froilán Roa 6333, La Florida */}
-            <div className="w-full h-[420px] rounded-2xl overflow-hidden border border-stone-200 shadow-xl">
-              <iframe
-                title="Ubicación Masoy Rehabilitación - Froilán Roa 6333, La Florida, Santiago"
-                src="https://maps.google.com/maps?q=Froil%C3%A1n+Roa+6333,+La+Florida,+Santiago,+Chile&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            {/* Info tarjeta */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-stone-900 mb-6">Tabla de precios</h3>
+                <div className="flex flex-col gap-3">
+                  {precios.map((p) => (
+                    <div key={`${p.personas}-${p.duracion}`} className="flex items-center justify-between py-3 border-b border-stone-100 last:border-0">
+                      <div>
+                        <p className="font-semibold text-stone-800 text-sm">{p.personas}</p>
+                        <p className="text-stone-500 text-xs">{p.duracion}</p>
+                      </div>
+                      <p className="font-black text-stone-900 text-lg">{p.precio}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-stone-400 text-xs mt-5 leading-relaxed">
+                  Camilla, toallas, música y aromaterapia incluidos. Cancelaciones con 24 horas de anticipación.
+                </p>
+              </div>
+
+              <div className="bg-stone-800 text-white rounded-2xl p-8 text-center">
+                <p className="text-stone-300 text-sm mb-2">¿Preguntas? Escríbeme</p>
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-2xl font-bold text-white hover:text-stone-200 transition-colors block mb-4"
+                >
+                  +56 9 4214 2229
+                </a>
+                <p className="text-stone-400 text-xs">Lunes a sábado · 09:00 – 20:00</p>
+              </div>
             </div>
 
           </div>
@@ -448,13 +479,12 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-8 h-8 rounded-full bg-stone-700 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">M</span>
+                  <span className="text-white font-bold text-sm">R</span>
                 </div>
-                <span className="text-white font-bold">Masoy Rehabilitación</span>
+                <span className="text-white font-bold">Rocío Masoterapia</span>
               </div>
               <p className="text-sm text-stone-500 leading-relaxed">
-                Centro de masoterapia y rehabilitación en Froilán Roa #6333, La Florida, Santiago.
-                Masajes desde $34.000 los 60 min.
+                Masaje a domicilio en Santiago. Camilla, toallas, música y aromaterapia incluidos. Desde $42.000 los 60 min.
               </p>
             </div>
 
@@ -464,21 +494,17 @@ export default function Home() {
                 <li><a href="#servicios" className="hover:text-white transition-colors">Masaje Relajante</a></li>
                 <li><a href="#servicios" className="hover:text-white transition-colors">Masaje Descontracturante</a></li>
                 <li><a href="#servicios" className="hover:text-white transition-colors">Masaje Deportivo</a></li>
+                <li><a href="#precios" className="hover:text-white transition-colors">Ver precios</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Contacto</h3>
               <ul className="flex flex-col gap-2 text-sm">
-                <li>📍 Froilán Roa #6333, La Florida</li>
+                <li>📍 Santiago, Chile</li>
                 <li>
-                  <a href={`tel:+${WA_NUMBER}`} className="hover:text-white transition-colors">
+                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     📱 +56 9 4214 2229
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:Masoyrehabilitacion@gmail.com" className="hover:text-white transition-colors">
-                    ✉️ Masoyrehabilitacion@gmail.com
                   </a>
                 </li>
                 <li>
@@ -486,13 +512,14 @@ export default function Home() {
                     📸 @rocio.masoterapia
                   </a>
                 </li>
+                <li className="text-stone-600">Lun–Sáb · 09:00–20:00</li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-stone-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-stone-600">
-            <p>© {new Date().getFullYear()} Masoy Rehabilitación. Todos los derechos reservados.</p>
-            <p>Masajes en La Florida · Santiago · Chile</p>
+            <p>© {new Date().getFullYear()} Rocío Masoterapia. Todos los derechos reservados.</p>
+            <p>Masaje a domicilio · Santiago · Chile</p>
           </div>
         </div>
       </footer>
