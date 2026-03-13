@@ -136,9 +136,9 @@ export default function Home() {
       >
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/564575294_18002891396827903_7842854950051613160_n.webp')" }}
+          style={{ backgroundImage: "url('/images/3.jpg.jpeg')" }}
           role="img"
-          aria-label="Rocío Masoterapia - Masaje a domicilio en Santiago"
+          aria-label="Camilla de masaje a domicilio — Rocío Masoterapia Santiago"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/65 via-stone-900/55 to-stone-900/80" />
 

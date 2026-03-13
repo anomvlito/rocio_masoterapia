@@ -21,7 +21,7 @@ const businessJsonLd = {
     "name": "Santiago",
     "addressCountry": "CL",
   },
-  "image": "https://rocio-masoterapia.vercel.app/images/564575294_18002891396827903_7842854950051613160_n.webp",
+  "image": "https://rocio-masoterapia.vercel.app/images/3.jpg.jpeg",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -120,10 +120,10 @@ export const metadata: Metadata = {
     siteName: "Rocío Masoterapia",
     images: [
       {
-        url: "/images/564575294_18002891396827903_7842854950051613160_n.webp",
+        url: "/images/3.jpg.jpeg",
         width: 1200,
         height: 630,
-        alt: "Rocío Masoterapia - Masaje a Domicilio en Santiago",
+        alt: "Rocío Masoterapia - Camilla de masaje a domicilio en Santiago",
       },
     ],
   },
