@@ -175,17 +175,13 @@ export default function Home() {
           </div>
 
           <div className="flex flex-row items-center justify-center mt-12 md:mt-16 text-stone-300 divide-x divide-stone-600">
-            <div className="text-center px-4 md:px-8">
+            <div className="text-center px-5 md:px-10">
               <p className="text-2xl md:text-3xl font-bold text-white">$42.000</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">60 MIN</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1 text-stone-400">60 min · 1 persona</p>
             </div>
-            <div className="text-center px-4 md:px-8">
-              <p className="text-2xl md:text-3xl font-bold text-white">3</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">TIPOS DE MASAJE</p>
-            </div>
-            <div className="text-center px-4 md:px-8">
-              <p className="text-2xl md:text-3xl font-bold text-white">2</p>
-              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1">PERSONAS</p>
+            <div className="text-center px-5 md:px-10">
+              <p className="text-2xl md:text-3xl font-bold text-white">$53.000</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest mt-1 text-stone-400">90 min · 1 persona</p>
             </div>
           </div>
         </div>
