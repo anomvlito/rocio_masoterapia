@@ -1,6 +1,8 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 type Slot = 'hero' | 'profile' | 'gallery1' | 'gallery2'
 
@@ -75,12 +77,12 @@ export default function AdminPanel() {
           Panel Admin — Rocío Masoterapia
         </h1>
         <div className="flex items-center gap-4">
-          <a
+          <Link
             href="/"
             className="text-sm text-stone-500 hover:text-stone-700 transition-colors"
           >
             ← Ver sitio
-          </a>
+          </Link>
           <button
             onClick={handleLogout}
             className="text-sm px-3 py-1.5 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg transition-colors"
@@ -110,11 +112,13 @@ export default function AdminPanel() {
                 className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm"
               >
                 {/* Image preview */}
-                <div className="aspect-video bg-stone-100 overflow-hidden">
-                  <img
+                <div className="aspect-video bg-stone-100 overflow-hidden relative">
+                  <Image
                     src={imgSrc}
                     alt={label}
-                    className="w-full h-full object-cover"
+                    fill
+                    unoptimized
+                    className="object-cover"
                   />
                 </div>
 
