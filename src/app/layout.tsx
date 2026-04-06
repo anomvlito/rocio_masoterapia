@@ -24,9 +24,15 @@ const businessJsonLd = {
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "opens": "09:00",
       "closes": "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday"],
+      "opens": "10:00",
+      "closes": "13:00",
     },
   ],
   "priceRange": "$$",
@@ -80,7 +86,7 @@ export const metadata: Metadata = {
     template: "%s | Rocío Masoterapia",
   },
   description:
-    "Masaje a domicilio en Santiago con Rocío Abarzúa. Camilla, toallas, música y aromaterapia incluidos. Masajes desde $42.000 (60 min). Lunes a sábado 09:00–20:00. Agenda por WhatsApp.",
+    "Masaje a domicilio en Santiago con Rocío Abarzúa. Camilla, toallas, música y aromaterapia incluidos. Masajes desde $42.000 (60 min). Lun–Vie 09:00–20:00, Sáb 10:00–13:00. Agenda por WhatsApp.",
   keywords: [
     "masaje a domicilio Santiago",
     "masoterapia a domicilio",

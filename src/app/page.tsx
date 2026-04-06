@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { SetmoreButton } from '@/components/ui/SetmoreButton';
 
 const WA_NUMBER = '56942142229';
-const WA_TEXT = encodeURIComponent('Hola Rocío, quisiera agendar un masaje a domicilio 💆');
-const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
+const waLink = (texto: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
+const WA_LINK = waLink('Hola Rocío! Quisiera agendar un masaje a domicilio 💆 ¿Tienes disponibilidad?');
 
 const servicios = [
   {
@@ -15,6 +15,7 @@ const servicios = [
     nombre: 'Masaje Relajante',
     descripcion:
       'Libera tensiones, alivia el estrés y te reconecta con tu cuerpo. Técnica suave y envolvente que calma el sistema nervioso y restaura tu energía.',
+    waTexto: 'Hola Rocío! Me gustaría agendar un Masaje Relajante a domicilio 🌿 ¿Tienes disponibilidad?',
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const servicios = [
     nombre: 'Masaje Descontracturante',
     descripcion:
       'Trabaja en profundidad para liberar contracturas musculares. Ideal para dolores cervicales, dorsales y lumbares causados por estrés o mala postura.',
+    waTexto: 'Hola Rocío! Me gustaría agendar un Masaje Descontracturante a domicilio 💆 Tengo molestias musculares y quisiera más información.',
   },
   {
     id: 3,
@@ -29,64 +31,91 @@ const servicios = [
     nombre: 'Masaje Deportivo',
     descripcion:
       'Diseñado para deportistas activos. Mejora el rendimiento, previene lesiones y acelera la recuperación muscular post-entrenamiento.',
+    waTexto: 'Hola Rocío! Me gustaría agendar un Masaje Deportivo a domicilio 🏃 ¿Tienes disponibilidad?',
   },
 ];
 
 const precios = [
-  { duracion: '60 minutos', personas: '1 persona', precio: '$42.000' },
-  { duracion: '90 minutos', personas: '1 persona', precio: '$53.000' },
-  { duracion: '60 minutos', personas: '2 personas', precio: '$80.000' },
-  { duracion: '90 minutos', personas: '2 personas', precio: '$95.000' },
+  {
+    duracion: '60 minutos',
+    personas: '1 persona',
+    precio: '$42.000',
+    waTexto: 'Hola Rocío! Me gustaría agendar un masaje de 60 minutos para 1 persona 💆 ¿Tienes disponibilidad?',
+  },
+  {
+    duracion: '90 minutos',
+    personas: '1 persona',
+    precio: '$53.000',
+    waTexto: 'Hola Rocío! Me gustaría agendar un masaje de 90 minutos para 1 persona 💆 ¿Tienes disponibilidad?',
+  },
+  {
+    duracion: '60 minutos',
+    personas: '2 personas',
+    precio: '$80.000',
+    waTexto: 'Hola Rocío! Me gustaría agendar un masaje de 60 minutos para 2 personas 👫 ¿Tienes disponibilidad?',
+  },
+  {
+    duracion: '90 minutos',
+    personas: '2 personas',
+    precio: '$95.000',
+    waTexto: 'Hola Rocío! Me gustaría agendar un masaje de 90 minutos para 2 personas 👫 ¿Tienes disponibilidad?',
+  },
 ];
 
 const productos = [
   {
     id: 1,
-    nombre: 'Crema L-Reductora',
-    presentacion: '450 ml',
-    categoria: 'Reductor',
-    descripcion: 'Reduce medidas y combate la grasa localizada. Ideal para abdomen, caderas y muslos.',
-    imagen: '/images/productos/crema-l-reductora.png',
-  },
-  {
-    id: 2,
-    nombre: 'Crema Oxireductora',
-    presentacion: '450 ml',
-    categoria: 'Reductor',
-    descripcion: 'Activa la circulación y oxigena los tejidos para potenciar el efecto reductor del masaje.',
-    imagen: '/images/productos/crema-oxireductora-nobg.png',
-  },
-  {
-    id: 3,
-    nombre: 'Crema Lipo-Reductora',
-    presentacion: 'Dr. Fontboté',
-    categoria: 'Reductor',
-    descripcion: 'Fórmula profesional que favorece la eliminación de grasa acumulada con uso constante.',
-    imagen: '/images/productos/crema-lipo-reductora-fontbote.png',
-  },
-  {
-    id: 4,
-    nombre: 'Crema Celu-Stop',
-    presentacion: '450 ml',
-    categoria: 'Firmeza',
-    descripcion: 'Combate la celulitis y mejora la textura de la piel, dejándola más lisa y uniforme.',
-    imagen: '/images/productos/crema-celu-stop-nobg.png',
-  },
-  {
-    id: 5,
-    nombre: 'Crema Reafirmante Plus',
-    presentacion: '450 ml',
-    categoria: 'Firmeza',
-    descripcion: 'Reafirma y tonifica la piel flácida. Complemento ideal post-masaje para mantener resultados.',
-    imagen: '/images/productos/crema-reafirmante-plus.png',
-  },
-  {
-    id: 6,
     nombre: 'Crema Armonizante',
     presentacion: '450 ml',
     categoria: 'Masaje',
     descripcion: 'Crema deslizante de uso profesional. Hidrata profundamente y facilita la técnica de masaje.',
     imagen: '/images/productos/crema-masajes-armonizante.png',
+    waTexto: 'Hola Rocío! Me gustaría consultar disponibilidad de la Crema de Masajes Armonizante (450ml) 🙌 ¿La tienes disponible?',
+  },
+  {
+    id: 2,
+    nombre: 'Crema L-Reductora',
+    presentacion: '450 ml',
+    categoria: 'Reductor',
+    descripcion: 'Reduce medidas y combate la grasa localizada. Ideal para abdomen, caderas y muslos.',
+    imagen: '/images/productos/crema-l-reductora.png',
+    waTexto: 'Hola Rocío! Me gustaría consultar disponibilidad de la Crema L-Reductora (450ml) 🙌 ¿La tienes disponible?',
+  },
+  {
+    id: 3,
+    nombre: 'Crema Oxireductora',
+    presentacion: '450 ml',
+    categoria: 'Reductor',
+    descripcion: 'Activa la circulación y oxigena los tejidos para potenciar el efecto reductor del masaje.',
+    imagen: '/images/productos/crema-oxireductora-nobg.png',
+    waTexto: 'Hola Rocío! Me gustaría consultar disponibilidad de la Crema Oxireductora (450ml) 🙌 ¿La tienes disponible?',
+  },
+  {
+    id: 4,
+    nombre: 'Crema Lipo-Reductora',
+    presentacion: 'Dr. Fontboté',
+    categoria: 'Reductor',
+    descripcion: 'Fórmula profesional que favorece la eliminación de grasa acumulada con uso constante.',
+    imagen: '/images/productos/crema-lipo-reductora-fontbote.png',
+    waTexto: 'Hola Rocío! Me gustaría consultar disponibilidad de la Crema Lipo-Reductora Dr. Fontboté 🙌 ¿La tienes disponible?',
+  },
+  {
+    id: 5,
+    nombre: 'Crema Celu-Stop',
+    presentacion: '450 ml',
+    categoria: 'Firmeza',
+    descripcion: 'Combate la celulitis y mejora la textura de la piel, dejándola más lisa y uniforme.',
+    imagen: '/images/productos/crema-celu-stop-nobg.png',
+    waTexto: 'Hola Rocío! Me gustaría consultar disponibilidad de la Crema Celu-Stop (450ml) 🙌 ¿La tienes disponible?',
+  },
+  {
+    id: 6,
+    nombre: 'Crema Reafirmante Plus',
+    presentacion: '450 ml',
+    categoria: 'Firmeza',
+    descripcion: 'Reafirma y tonifica la piel flácida. Complemento ideal post-masaje para mantener resultados.',
+    imagen: '/images/productos/crema-reafirmante-plus.png',
+    waTexto: 'Hola Rocío! Me gustaría consultar disponibilidad de la Crema Reafirmante Plus (450ml) 🙌 ¿La tienes disponible?',
   },
 ];
 
@@ -131,10 +160,10 @@ export default function Home() {
     <>
       {/* Top bar */}
       <div className="bg-stone-800 text-stone-200 text-xs text-center py-2 px-4 tracking-wide hidden sm:block">
-        Masaje a domicilio en Santiago · Lun–Sáb 09:00–20:00 · WhatsApp +56 9 4214 2229
+        Masaje a domicilio en Santiago · Lun–Vie 09:00–20:00 · Sáb 10:00–13:00 · WhatsApp +56 9 4214 2229
       </div>
       <div className="bg-stone-800 text-stone-200 text-[10px] text-center py-2 px-2 tracking-wide sm:hidden">
-        Masaje a domicilio · Lun–Sáb 09:00–20:00
+        Masaje a domicilio · Lun–Vie 09:00–20:00 · Sáb 10:00–13:00
       </div>
 
       {/* Navbar */}
@@ -293,9 +322,14 @@ export default function Home() {
                 <p className="text-stone-500 leading-relaxed text-sm" itemProp="description">
                   {s.descripcion}
                 </p>
-                <SetmoreButton className="inline-block mt-5 text-sm font-semibold text-stone-700 border border-stone-300 px-4 py-2 rounded-full hover:bg-stone-800 hover:text-white hover:border-stone-800 transition-all cursor-pointer">
-                  Reservar →
-                </SetmoreButton>
+                <a
+                  href={waLink(s.waTexto)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-5 text-sm font-semibold text-stone-700 border border-stone-300 px-4 py-2 rounded-full hover:bg-stone-800 hover:text-white hover:border-stone-800 transition-all"
+                >
+                  Agendar este masaje →
+                </a>
               </article>
             ))}
           </div>
@@ -315,16 +349,20 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             {precios.map((p) => (
-              <div
+              <a
                 key={`${p.personas}-${p.duracion}`}
-                className="bg-stone-50 border border-stone-200 rounded-2xl p-6 flex items-center justify-between hover:border-stone-400 hover:shadow-md transition-all"
+                href={waLink(p.waTexto)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-stone-50 border border-stone-200 rounded-2xl p-6 flex items-center justify-between hover:border-stone-400 hover:shadow-md transition-all"
               >
                 <div>
                   <p className="font-bold text-stone-900 text-base">{p.personas}</p>
                   <p className="text-stone-500 text-sm">{p.duracion}</p>
+                  <p className="text-stone-400 text-xs mt-1 group-hover:text-stone-600 transition-colors">Agendar →</p>
                 </div>
                 <p className="text-2xl font-black text-stone-800">{p.precio}</p>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -373,7 +411,7 @@ export default function Home() {
                   'Maseoterapeuta certificada',
                   'Camilla, toallas, música y aromaterapia incluidos',
                   'Para 1 o 2 personas',
-                  'Lunes a sábado, 09:00–20:00',
+                  'Lun–Vie 09:00–20:00 · Sáb 10:00–13:00',
                   'Agenda por WhatsApp',
                 ].map((item) => (
                   <p key={item} className="text-stone-700 font-medium text-sm flex items-start gap-2">
@@ -457,10 +495,9 @@ export default function Home() {
                   </div>
                   <p className="text-stone-500 text-xs leading-relaxed">{p.descripcion}</p>
                   <a
-                    href={WA_LINK}
+                    href={waLink(p.waTexto)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
                     className="mt-1 inline-block text-center text-xs font-semibold bg-stone-800 hover:bg-stone-700 text-white px-4 py-2 rounded-full transition-colors"
                   >
                     Consultar disponibilidad
@@ -535,7 +572,7 @@ export default function Home() {
               </div>
 
               <p className="text-stone-600 text-lg leading-relaxed">
-                Escríbeme por WhatsApp o agenda directamente en línea. Atiendo en Santiago de lunes a sábado.
+                Escríbeme por WhatsApp o agenda directamente en línea. Atiendo en Santiago de lunes a viernes y los sábados en la mañana.
               </p>
 
               <div className="flex flex-col gap-5">
@@ -574,7 +611,8 @@ export default function Home() {
                   <div className="w-10 h-10 bg-stone-100 rounded-full flex items-center justify-center shrink-0 text-lg" aria-hidden="true">🕐</div>
                   <div>
                     <p className="font-bold text-stone-900">Horario de atención</p>
-                    <p className="text-stone-600">Lunes a Sábado: <strong>09:00 – 20:00</strong></p>
+                    <p className="text-stone-600">Lun–Vie: <strong>09:00 – 20:00</strong></p>
+                    <p className="text-stone-600">Sábado: <strong>10:00 – 13:00</strong></p>
                     <p className="text-stone-500 text-sm mt-1">
                       Cancelaciones y reagendamientos con 24 horas de anticipación.
                     </p>
@@ -642,7 +680,7 @@ export default function Home() {
                 >
                   +56 9 4214 2229
                 </a>
-                <p className="text-stone-400 text-xs">Lunes a sábado · 09:00 – 20:00</p>
+                <p className="text-stone-400 text-xs">Lun–Vie 09:00–20:00 · Sáb 10:00–13:00</p>
               </div>
             </div>
 
@@ -690,7 +728,7 @@ export default function Home() {
                     📸 @rocio.masoterapia
                   </a>
                 </li>
-                <li className="text-stone-600">Lun–Sáb · 09:00–20:00</li>
+                <li className="text-stone-600">Lun–Vie 09:00–20:00 · Sáb 10:00–13:00</li>
               </ul>
             </div>
           </div>
