@@ -528,7 +528,7 @@ export default function Home() {
 
       {/* GALERÍA */}
       <section id="galeria" className="py-4 bg-stone-100" aria-label="Galería de fotos">
-        <div className="grid grid-cols-2 gap-1">
+        <div className="grid grid-cols-3 gap-1">
           <div className="relative aspect-square overflow-hidden group">
             <Image
               src="/images/gato.jpg.jpeg"
@@ -543,6 +543,17 @@ export default function Home() {
               alt="Camilla de masaje a domicilio en hogar — Rocío Masoterapia Santiago"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div className="relative aspect-square overflow-hidden group bg-stone-900">
+            <video
+              src="/videos/masaje-web.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+              aria-label="Video de sesión de masaje a domicilio"
             />
           </div>
         </div>
