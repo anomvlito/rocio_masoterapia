@@ -539,8 +539,8 @@ export default function Home() {
           </div>
           <div className="relative aspect-square overflow-hidden group">
             <Image
-              src="/images/gato.jpg.jpeg"
-              alt="Rocío Abarzúa Torrealba - Maseoterapeuta a domicilio Santiago"
+              src="/images/564575294_18002891396827903_7842854950051613160_n.webp"
+              alt="Camilla de masaje a domicilio en hogar — Rocío Masoterapia Santiago"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
             />
