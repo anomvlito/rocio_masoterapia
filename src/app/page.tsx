@@ -243,13 +243,19 @@ export default function Home() {
         className="relative min-h-[88vh] flex items-center justify-center overflow-hidden"
         aria-label="Bienvenida"
       >
-        <div
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero.jpg')", backgroundPosition: "center 70%" }}
-          role="img"
-          aria-label="Camilla de masaje a domicilio — Rocío Masoterapia Santiago"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/85 via-stone-900/75 to-stone-900/90" />
+        {/* Video de fondo con fallback a imagen */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/hero.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
+          aria-hidden="true"
+        >
+          <source src="/videos/masaje-web.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900/90" />
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
           <p className="text-stone-300 text-sm font-medium tracking-[0.3em] uppercase mb-4">
