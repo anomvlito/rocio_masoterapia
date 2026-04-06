@@ -348,7 +348,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/profile.webp"
+                src="/images/gato.jpg.jpeg"
                 alt="Rocío Abarzúa Torrealba - Maseoterapeuta a domicilio en Santiago"
                 fill
                 className="object-cover"
@@ -491,7 +491,7 @@ export default function Home() {
         <div className="grid grid-cols-2 gap-1">
           <div className="relative aspect-square overflow-hidden group">
             <Image
-              src="/images/gallery1.webp"
+              src="/images/gato.jpg.jpeg"
               alt="Sesión de masaje a domicilio por Rocío Abarzúa"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
@@ -499,7 +499,7 @@ export default function Home() {
           </div>
           <div className="relative aspect-square overflow-hidden group">
             <Image
-              src="/images/gallery2.webp"
+              src="/images/gato.jpg.jpeg"
               alt="Rocío Abarzúa Torrealba - Maseoterapeuta a domicilio Santiago"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
