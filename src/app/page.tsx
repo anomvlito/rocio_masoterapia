@@ -45,48 +45,48 @@ const productos = [
     nombre: 'Crema L-Reductora',
     presentacion: '450 ml',
     categoria: 'Reductor',
+    descripcion: 'Reduce medidas y combate la grasa localizada. Ideal para abdomen, caderas y muslos.',
     imagen: '/images/productos/crema-l-reductora.png',
-    url: 'https://dermik.cl/product/crema-l-reductora-450-ml/',
   },
   {
     id: 2,
     nombre: 'Crema Oxireductora',
     presentacion: '450 ml',
     categoria: 'Reductor',
+    descripcion: 'Activa la circulación y oxigena los tejidos para potenciar el efecto reductor del masaje.',
     imagen: '/images/productos/crema-oxireductora-nobg.png',
-    url: 'https://dermik.cl/product/crema-oxireductora-450-ml/',
   },
   {
     id: 3,
     nombre: 'Crema Lipo-Reductora',
     presentacion: 'Dr. Fontboté',
     categoria: 'Reductor',
+    descripcion: 'Fórmula profesional que favorece la eliminación de grasa acumulada con uso constante.',
     imagen: '/images/productos/crema-lipo-reductora-fontbote.png',
-    url: 'https://kliki.cl/products/crema-lipo-reductora-dr-fontbote',
   },
   {
     id: 4,
     nombre: 'Crema Celu-Stop',
     presentacion: '450 ml',
     categoria: 'Firmeza',
+    descripcion: 'Combate la celulitis y mejora la textura de la piel, dejándola más lisa y uniforme.',
     imagen: '/images/productos/crema-celu-stop-nobg.png',
-    url: 'https://dermik.cl/product/crema-celu-stop-450-ml/',
   },
   {
     id: 5,
     nombre: 'Crema Reafirmante Plus',
     presentacion: '450 ml',
     categoria: 'Firmeza',
+    descripcion: 'Reafirma y tonifica la piel flácida. Complemento ideal post-masaje para mantener resultados.',
     imagen: '/images/productos/crema-reafirmante-plus.png',
-    url: 'https://dermik.cl/product/crema-reafirmante-plus-450-ml/',
   },
   {
     id: 6,
     nombre: 'Crema Armonizante',
     presentacion: '450 ml',
     categoria: 'Masaje',
+    descripcion: 'Crema deslizante de uso profesional. Hidrata profundamente y facilita la técnica de masaje.',
     imagen: '/images/productos/crema-masajes-armonizante.png',
-    url: 'https://dermik.cl/product/crema-de-masajes-armonizante-450-ml/',
   },
 ];
 
@@ -424,12 +424,9 @@ export default function Home() {
             onMouseLeave={onMouseUp}
           >
             {productos.map((p) => (
-              <a
+              <div
                 key={p.id}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex-shrink-0 w-52 md:w-60 bg-stone-50 border border-stone-200 rounded-2xl p-5 hover:border-stone-400 hover:shadow-xl transition-all duration-300 flex flex-col"
+                className="group flex-shrink-0 w-56 md:w-64 bg-stone-50 border border-stone-200 rounded-2xl p-5 hover:border-stone-400 hover:shadow-xl transition-all duration-300 flex flex-col"
                 draggable={false}
               >
                 {/* Badge categoría */}
@@ -440,30 +437,36 @@ export default function Home() {
                 </div>
 
                 {/* Imagen del producto */}
-                <div className="relative h-40 md:h-48 flex items-center justify-center mb-5">
+                <div className="relative h-40 md:h-44 flex items-center justify-center mb-4">
                   <div className="absolute inset-0 bg-gradient-to-b from-stone-100/50 to-transparent rounded-xl" />
                   <Image
                     src={p.imagen}
                     alt={`${p.nombre} ${p.presentacion}`}
                     width={160}
                     height={160}
-                    className="relative object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300 w-auto h-full max-h-40 md:max-h-48"
+                    className="relative object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300 w-auto h-full max-h-40 md:max-h-44"
                     draggable={false}
                   />
                 </div>
 
                 {/* Info */}
-                <div className="mt-auto">
-                  <p className="font-bold text-stone-900 text-sm leading-tight group-hover:text-stone-700 transition-colors">
-                    {p.nombre}
-                  </p>
-                  <p className="text-stone-500 text-xs mt-1">{p.presentacion}</p>
-                  <p className="text-stone-400 text-xs mt-3 font-medium group-hover:text-stone-700 transition-colors flex items-center gap-1">
-                    Ver producto
-                    <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-                  </p>
+                <div className="mt-auto flex flex-col gap-2">
+                  <div>
+                    <p className="font-bold text-stone-900 text-sm leading-tight">{p.nombre}</p>
+                    <p className="text-stone-400 text-xs mt-0.5">{p.presentacion}</p>
+                  </div>
+                  <p className="text-stone-500 text-xs leading-relaxed">{p.descripcion}</p>
+                  <a
+                    href={WA_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-1 inline-block text-center text-xs font-semibold bg-stone-800 hover:bg-stone-700 text-white px-4 py-2 rounded-full transition-colors"
+                  >
+                    Consultar disponibilidad
+                  </a>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
