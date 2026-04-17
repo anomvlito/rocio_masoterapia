@@ -391,14 +391,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/gato.jpg.jpeg"
-                alt="Rocío Abarzúa Torrealba - Maseoterapeuta a domicilio en Santiago"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/videos/masaje-web.mp4" type="video/mp4" />
+              </video>
             </div>
 
             <div className="flex flex-col gap-6">
