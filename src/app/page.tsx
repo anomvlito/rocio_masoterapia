@@ -253,7 +253,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
         >
-          <source src="/videos/masaje-web.mp4" type="video/mp4" />
+          <source src="/videos/IMG_6767.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900/90" />
 
